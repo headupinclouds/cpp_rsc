@@ -5,13 +5,13 @@ function(find_resource_compiler)
   if(NOT (COMMAND cpp_rsc))
     include(ExternalProject)
     ExternalProject_Add(cpp_rsc_prj
-                        GIT_REPOSITORY https://github.com/orex/cpp_rsc.git
+                        GIT_REPOSITORY https://github.com/headupinclouds/cpp_rsc.git
                         GIT_TAG master
                         INSTALL_COMMAND "")
     
     
     get_property(RSC_BIN_FOLDER TARGET cpp_rsc_prj PROPERTY _EP_BINARY_DIR)
-    set_property(GLOBAL PROPERTY CPPRSC_CMD ${RSC_BIN_FOLDER}/src/cpp_rsc)
+    set_property(GLOBAL PROPERTY CPPRSC_CMD ${RSC_BIN_FOLDER}/src/${CMAKE_CFG_INTDIR}/cpp_rsc)
   else() 
     set_property(GLOBAL PROPERTY CPPRSC_CMD cpp_rsc)
   endif()
